@@ -43,7 +43,7 @@
         a:hover { color: var(--accent-hover); }
 
         ul { list-style-position: outside; padding-left: 25px; margin-bottom: 1em; }
-        ul li { margin-bottom: 0.7em; }
+        ul li { margin-bottom: 0.7em; } /* Default list item spacing */
 
         /* --- Header --- */
         header {
@@ -85,6 +85,10 @@
         section h2 { text-align: center; margin-bottom: 50px; font-size: 2.2em; font-weight: 600; position: relative; padding-bottom: 15px; }
         section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--accent-color); border-radius: 2px; }
 
+        section[id] {
+            scroll-margin-top: 70px; /* Adjust this value based on exact nav height */
+        }
+
         /* --- About Section --- */
         #about .about-content { text-align: center; }
         #about p { max-width: 780px; margin: 0 auto 18px auto; }
@@ -106,7 +110,8 @@
 
         .skill-badge {
             display: inline-block; padding: 4px 10px; margin: 3px; border-radius: 12px;
-            font-size: 0.8em; font-weight: 500; color: var(--skill-text-color);
+            font-size: 0.9em; /* EDITED: Increased font size */
+            font-weight: 500; color: var(--skill-text-color);
             line-height: 1.5; cursor: default; white-space: nowrap;
             background-color: var(--skill-bg-primary); /* All badges use primary blue */
         }
@@ -137,14 +142,19 @@
         /* --- Presentations Section Specific --- */
          #presentations .intro-text { text-align: center; max-width: 780px; margin: 0 auto 40px auto; }
          #presentations .card p { margin-bottom: 10px; }
-         #presentations .pdf-note { font-size: 0.85em; color: #888; margin-top: 10px; align-self: flex-start; width: 100%; }
+         /* PDF Note rule removed */
+
 
         /* --- Education Section --- */
          #education { padding-top: 50px; }
         #education .item-card { margin-bottom: 15px; padding: 20px 25px; }
         #education .item-card ul { margin-bottom: 0.5em; }
+        #education .item-card ul li {
+            margin-bottom: 0.3em; /* EDITED: Reduced space between bullet points */
+        }
         #education h3 { font-size: 1.3em; }
         #education p.subtitle { font-size: 0.95em; margin-bottom: 5px;}
+
 
         /* --- Footer --- */
         footer { text-align: center; padding: 30px; margin-top: 0; background-color: var(--primary-text); color: var(--light-bg); font-size: 0.9em; border-top: 3px solid var(--accent-color); }
@@ -163,9 +173,13 @@
             .item-card, .card { padding: 20px; }
             .item-card h3, .card h3 { font-size: 1.3em; }
             .skills-container strong { font-size: 0.95em; }
+            .skill-badge { font-size: 0.85em; } /* Adjust badge font on medium screens */
             #education .item-card { padding: 15px 20px; }
             #education h3 { font-size: 1.2em; }
             #presentations .intro-text { margin-bottom: 30px; }
+            section[id] {
+                scroll-margin-top: 60px;
+            }
         }
          @media (max-width: 480px) {
               header h1 { font-size: 2em; }
@@ -174,8 +188,11 @@
               .header-social-links a { padding: 7px 12px; font-size: 0.85em; margin: 5px 5px;}
               .header-social-links a svg { width: 14px; height: 14px; margin-right: 5px;}
               nav ul li { display: block; margin: 8px 0; }
-              .skill-badge { font-size: 0.75em; padding: 3px 8px; }
+              .skill-badge { font-size: 0.8em; padding: 3px 8px; } /* Adjust badge font on small screens */
               .skills-container strong { font-size: 0.9em; }
+              section[id] {
+                  scroll-margin-top: 55px;
+              }
          }
 
     </style>
@@ -205,7 +222,7 @@
 
     <nav>
         <div class="container">
-             <ul> <!-- Kept Previous Order: About -> Projects -> Presentations -> Experience -> Education -->
+             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#presentations">Presentations</a></li>
@@ -251,7 +268,6 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A4,4 0 0,0 8,6C8,7.81 9.22,9.35 11,9.85V10.06C9.84,10.43 9,11.61 9,13C9,14.66 10.34,16 12,16C12.53,16 13,15.84 13.41,15.58C14.28,16.54 15.53,17.14 17,17.29V18H7V17.29C8.47,17.14 9.72,16.54 10.59,15.58C11,15.84 11.47,16 12,16C13.66,16 15,14.66 15,13C15,11.61 14.16,10.43 13,10.06V9.85C14.78,9.35 16,7.81 16,6A4,4 0 0,0 12,2M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4M12,12A1,1 0 0,1 13,13A1,1 0 0,1 12,14A1,1 0 0,1 11,13A1,1 0 0,1 12,12M9,20H15V22H9V20Z" /></svg>
                                 <h3>Comprehensive Asthma Analysis</h3>
                             </div>
-                             <!-- EDITED DESCRIPTION -->
                             <p>
                                 Inspired by personal experience with lifelong asthma, this project analyzes self-collected data to explore trends, potential triggers, and management patterns. It showcases how personal data analysis can empower individuals to gain deeper insights and potentially take more control over their health conditions.
                             </p>
@@ -307,11 +323,12 @@
                                  A visual presentation summarizing the key findings, methodology, and insights derived from the Comprehensive Asthma Analysis project based on self-collected data.
                              </p>
                          </div>
-                          <div>
+                          <div> <!-- Link Wrapper -->
                             <a href="Comprehensive Asthma Analysis Presentation.pdf" target="_blank" rel="noopener noreferrer" class="card-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V11H4V13H16V15.59L19.59,12Z"/></svg>
                                 View PDF
                             </a>
+                            <!-- PDF Note Removed -->
                          </div>
                      </div>
 
@@ -325,11 +342,12 @@
                                  Midterm project presentation outlining the steps, considerations, and potential applications of a structured data analytics workflow within a retail business context.
                              </p>
                          </div>
-                         <div>
+                         <div> <!-- Link Wrapper -->
                             <a href="Midterm Presentation.pdf" target="_blank" rel="noopener noreferrer" class="card-link">
                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V11H4V13H16V15.59L19.59,12Z"/></svg>
                                 View PDF
                             </a>
+                             <!-- PDF Note Removed -->
                         </div>
                     </div>
 
@@ -441,7 +459,6 @@
 
                  <div class="item-card">
                     <h3>Data Analytics Certificate</h3>
-                     <!-- EDITED DATE -->
                      <p class="subtitle">Upright Education | March 2025</p>
                  </div>
 
