@@ -1,86 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Abnerson's Data Portfolio</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abnerson Ocampo - Data Analyst Portfolio</title>
+    <style>
+        /* --- Global Styles & Resets --- */
+        :root {
+            --primary-text: #2c3e50;
+            --secondary-text: #555;
+            --accent-color: #3498db; /* Primary Blue */
+            --accent-hover: #2980b9; /* Darker Blue */
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #e1e4e8;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --skill-bg-primary: var(--accent-color); /* Blue for ALL skills */
+            --skill-text-color: var(--white);
+        }
 
-    .container {
-      max-width: 800px;
-      margin: 80px auto;
-      padding: 0 20px;
-      background-color: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      text-align: center;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
-    h1 {
-      margin-top: 0;
-      padding: 20px 0;
-      background-color: #004080;
-      color: #fff;
-      border-radius: 8px 8px 0 0;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--secondary-text);
+            background-color: var(--light-bg);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 25px; width: 100%; }
+        main { flex-grow: 1; padding-top: 20px; padding-bottom: 40px; }
 
-    li {
-      margin: 20px 0;
-    }
+        h1, h2, h3, h4 { color: var(--primary-text); margin-bottom: 0.75em; line-height: 1.3; font-weight: 600; }
+        h4 { font-weight: 500; color: var(--secondary-text); margin-top: -0.5em; }
+        p { margin-bottom: 1.1em; }
 
-    a {
-      text-decoration: none;
-      font-size: 18px;
-      color: #004080;
-      font-weight: 500;
-      border: 2px solid transparent;
-      padding: 10px 15px;
-      border-radius: 5px;
-      transition: 0.2s ease-in-out;
-    }
+        a { color: var(--accent-color); text-decoration: none; transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out; }
+        a:hover { color: var(--accent-hover); }
 
-    a:hover {
-      border-color: #004080;
-      background-color: #e6f0ff;
-    }
+        ul { list-style-position: outside; padding-left: 25px; margin-bottom: 1em; }
+        ul li { margin-bottom: 0.7em; }
 
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #777;
-    }
-  </style>
+        /* --- Header --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-text) 0%, var(--accent-color) 100%);
+            color: var(--white);
+            padding: 45px 0 35px 0;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-hover);
+        }
+
+        header h1 { margin: 0; font-size: 2.8em; font-weight: 700; color: var(--white); }
+        header .job-title { margin-top: 5px; margin-bottom: 25px; font-size: 1.3em; color: rgba(255, 255, 255, 0.9); font-weight: 400; }
+
+        .header-social-links a {
+            margin: 0 8px; display: inline-flex; align-items: center; color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.7); padding: 8px 15px; border-radius: 25px;
+            font-size: 0.9em; font-weight: 500; transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .header-social-links a svg { width: 16px; height: 16px; margin-right: 7px; fill: currentColor; }
+        .header-social-links a:hover { background-color: rgba(255, 255, 255, 0.2); border-color: var(--white); color: var(--white); text-decoration: none; transform: translateY(-2px); }
+
+        /* --- Navigation Bar --- */
+        nav {
+            background-color: var(--white); padding: 15px 0; border-bottom: 1px solid var(--border-color);
+            text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        nav ul { list-style: none; padding: 0; margin: 0; }
+        nav ul li { display: inline-block; margin: 0 15px; }
+        nav ul li a { color: var(--primary-text); font-weight: 500; padding: 8px 12px; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease; }
+        nav ul li a:hover { color: var(--white); background-color: var(--accent-color); text-decoration: none; }
+
+        /* --- Section Styling --- */
+        section { padding: 60px 0; border-bottom: 1px solid var(--border-color); background-color: var(--white); }
+        main section:nth-child(even) { background-color: #fdfdfd; }
+        main section:nth-child(odd) { background-color: var(--white); }
+        section:first-of-type { padding-top: 40px; }
+        section:last-of-type { border-bottom: none; padding-bottom: 30px; }
+
+        section h2 { text-align: center; margin-bottom: 50px; font-size: 2.2em; font-weight: 600; position: relative; padding-bottom: 15px; }
+        section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--accent-color); border-radius: 2px; }
+
+        /* --- About Section --- */
+        #about .about-content { text-align: center; }
+        #about p { max-width: 780px; margin: 0 auto 18px auto; }
+
+        /* --- Work Experience & Education Card --- */
+        .item-card {
+            background-color: var(--white); padding: 30px; margin-bottom: 30px; border: 1px solid var(--border-color);
+            border-radius: 8px; box-shadow: 0 4px 8px var(--shadow-color); transition: box-shadow 0.3s ease, transform 0.3s ease;
+            border-left: 5px solid var(--accent-color);
+        }
+        .item-card:hover { box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12); transform: translateY(-3px); }
+        .item-card h3 { margin-bottom: 5px; font-size: 1.4em; }
+        .item-card .subtitle { font-weight: 500; color: var(--secondary-text); margin-bottom: 10px; font-size: 1em; display: block; }
+        .item-card .project-title { font-weight: 600; color: var(--primary-text); margin-bottom: 18px; font-size: 1.1em; }
+
+        /* --- Skills Badges --- */
+        .skills-container { margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--border-color); }
+        .skills-container strong { display: block; margin-bottom: 10px; font-weight: 600; color: var(--primary-text); font-size: 1em; }
+
+        .skill-badge {
+            display: inline-block; padding: 4px 10px; margin: 3px; border-radius: 12px;
+            font-size: 0.8em; font-weight: 500; color: var(--skill-text-color);
+            line-height: 1.5; cursor: default; white-space: nowrap;
+            background-color: var(--skill-bg-primary); /* All badges use primary blue */
+        }
+
+        /* --- Projects & Presentations Common Card Style --- */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        .card {
+            background-color: var(--white); border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 25px; box-shadow: 0 4px 8px var(--shadow-color); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); }
+        .card .card-header { display: flex; align-items: center; margin-bottom: 12px; }
+        .card .card-header svg { width: 24px; height: 24px; fill: var(--accent-color); margin-right: 10px; flex-shrink: 0; }
+        .card h3 { margin-bottom: 0; font-size: 1.4em; }
+        .card p { margin-bottom: 15px; flex-grow: 1; }
+        .card .tools { font-size: 0.9em; color: var(--secondary-text); margin-bottom: 20px; font-style: italic; background-color: var(--light-bg); padding: 5px 10px; border-radius: 4px; display: inline-block; }
+        .card .tools strong { font-style: normal; color: var(--primary-text); font-weight: 600; }
+
+        .card .card-link {
+            display: inline-flex; align-items: center; background-color: var(--accent-color); color: var(--white); padding: 10px 20px;
+            text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease, transform 0.2s ease;
+            align-self: flex-start; font-weight: 500; border: none;
+        }
+         .card .card-link svg { width: 16px; height: 16px; margin-right: 8px; fill: currentColor; }
+        .card .card-link:hover { background-color: var(--accent-hover); text-decoration: none; transform: scale(1.03); }
+
+        /* --- Presentations Section Specific --- */
+         #presentations .intro-text { text-align: center; max-width: 780px; margin: 0 auto 40px auto; }
+         #presentations .card p { margin-bottom: 10px; }
+         #presentations .pdf-note { font-size: 0.85em; color: #888; margin-top: 10px; align-self: flex-start; width: 100%; }
+
+        /* --- Education Section --- */
+         #education { padding-top: 50px; }
+        #education .item-card { margin-bottom: 15px; padding: 20px 25px; }
+        #education .item-card ul { margin-bottom: 0.5em; }
+        #education h3 { font-size: 1.3em; }
+        #education p.subtitle { font-size: 0.95em; margin-bottom: 5px;}
+
+        /* --- Footer --- */
+        footer { text-align: center; padding: 30px; margin-top: 0; background-color: var(--primary-text); color: var(--light-bg); font-size: 0.9em; border-top: 3px solid var(--accent-color); }
+        footer p { margin: 0; color: #ccc; }
+        footer span#currentYear { color: var(--white); }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.3em; }
+            header .job-title { font-size: 1.15em; }
+            nav ul li { margin: 0 8px; }
+            nav ul li a { padding: 6px 8px; font-size: 0.95em; }
+            section h2 { font-size: 1.9em; }
+            .grid-container { grid-template-columns: 1fr; }
+            .container { padding: 0 15px; }
+            .item-card, .card { padding: 20px; }
+            .item-card h3, .card h3 { font-size: 1.3em; }
+            .skills-container strong { font-size: 0.95em; }
+            #education .item-card { padding: 15px 20px; }
+            #education h3 { font-size: 1.2em; }
+            #presentations .intro-text { margin-bottom: 30px; }
+        }
+         @media (max-width: 480px) {
+              header h1 { font-size: 2em; }
+              header .job-title { font-size: 1.05em; }
+              .header-social-links { margin-top: 15px; }
+              .header-social-links a { padding: 7px 12px; font-size: 0.85em; margin: 5px 5px;}
+              .header-social-links a svg { width: 14px; height: 14px; margin-right: 5px;}
+              nav ul li { display: block; margin: 8px 0; }
+              .skill-badge { font-size: 0.75em; padding: 3px 8px; }
+              .skills-container strong { font-size: 0.9em; }
+         }
+
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Abnerson's Data Projects</h1>
-    <ul>
-      <li>
-        <a href="https://abnersonocampo.github.io/student-performance-analysis/">
-          📊 Student Performance Analysis
-        </a>
-      </li>
-      <li>
-        <a href="https://abnersonocampo.github.io/comprehensive-asthma-analysis/">
-          💨 Comprehensive Asthma Analysis
-        </a>
-      </li>
-    </ul>
+
+    <header>
+        <div class="container">
+            <h1>Abnerson Ocampo</h1>
+            <p class="job-title">Data Analyst</p>
+            <div class="header-social-links">
+                 <a href="mailto:abnersonocampo@gmail.com">
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6M20 6L12 11L4 6H20M20 18H4V8L12 13L20 8V18Z"/></svg>
+                   Email
+                </a>
+                <a href="https://www.linkedin.com/in/abnerson-ocampo/" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://abnersonocampo.github.io/" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+             <ul> <!-- Kept Previous Order: About -> Projects -> Presentations -> Experience -> Education -->
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#presentations">Presentations</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Section Order Kept -->
+
+        <!-- About Section (1st) -->
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <p>
+                        Hello! I’m Abnerson, a Data Analyst passionate about turning raw data into meaningful, actionable insights.
+                    </p>
+                    <p>
+                        I have built a strong foundation in data analysis, problem-solving, and business intelligence. I specialize in Python, SQL, R, Excel, and visualization tools like Tableau and Power BI to analyze and interpret data for actionable business insights. With a critical and problem-solving mindset, I work to uncover key insights, improve processes, and support smarter decision-making.
+                    </p>
+                    <p>
+                        Passionate about continuous learning, I actively explore new technologies, particularly in Machine Learning and AI, to enhance predictive analytics and automation. Thriving in dynamic environments, I enjoy adapting, experimenting, and applying innovative data solutions to real-world challenges.
+                    </p>
+                    <p>
+                        Let’s connect and discuss data analytics, business intelligence, and emerging technologies!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (2nd) -->
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="grid-container">
+
+                    <div class="card">
+                        <div>
+                            <div class="card-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A4,4 0 0,0 8,6C8,7.81 9.22,9.35 11,9.85V10.06C9.84,10.43 9,11.61 9,13C9,14.66 10.34,16 12,16C12.53,16 13,15.84 13.41,15.58C14.28,16.54 15.53,17.14 17,17.29V18H7V17.29C8.47,17.14 9.72,16.54 10.59,15.58C11,15.84 11.47,16 12,16C13.66,16 15,14.66 15,13C15,11.61 14.16,10.43 13,10.06V9.85C14.78,9.35 16,7.81 16,6A4,4 0 0,0 12,2M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4M12,12A1,1 0 0,1 13,13A1,1 0 0,1 12,14A1,1 0 0,1 11,13A1,1 0 0,1 12,12M9,20H15V22H9V20Z" /></svg>
+                                <h3>Comprehensive Asthma Analysis</h3>
+                            </div>
+                             <!-- EDITED DESCRIPTION -->
+                            <p>
+                                Inspired by personal experience with lifelong asthma, this project analyzes self-collected data to explore trends, potential triggers, and management patterns. It showcases how personal data analysis can empower individuals to gain deeper insights and potentially take more control over their health conditions.
+                            </p>
+                            <p class="tools">
+                                <strong>Tools:</strong> Python (Pandas, Matplotlib, Seaborn), Jupyter Notebook, Statistical Analysis, Data Visualization
+                            </p>
+                        </div>
+                        <a href="https://abnersonocampo.github.io/comprehensive-asthma-analysis/" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/></svg>
+                            View Project
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <div>
+                             <div class="card-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L23,9L12,3M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" /></svg>
+                                <h3>Student Performance Analysis</h3>
+                             </div>
+                            <p>
+                                Analyzed factors influencing student academic performance using demographic, social, and school-related data. Identified key predictors of success and visualized patterns using statistical methods and machine learning.
+                            </p>
+                             <p class="tools">
+                                <strong>Tools:</strong> Python (Pandas, Scikit-learn, Matplotlib, Seaborn), Jupyter Notebook, Data Visualization, Machine Learning
+                            </p>
+                        </div>
+                         <a href="https://abnersonocampo.github.io/student-performance-analysis/" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/></svg>
+                            View Project
+                         </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+         <!-- Presentations Section (3rd) -->
+        <section id="presentations">
+            <div class="container">
+                <h2>Presentations</h2>
+                 <p class="intro-text">
+                    Skilled in developing and delivering clear, data-driven presentations to communicate complex analytical findings and insights effectively to diverse audiences. Able to translate technical results into compelling narratives that inform decision-making.
+                </p>
+                 <div class="grid-container">
+
+                     <div class="card">
+                         <div>
+                            <div class="card-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,20H5V4H7V10H17V4H19M12,2A2,2 0 0,1 14,4V8H10V4A2,2 0 0,1 12,2M3,2C1.89,2 1,2.89 1,4V20A2,2 0 0,0 3,22H21A2,2 0 0,0 23,20V4C23,2.89 22.1,2 21,2H17V9C17,9.55 16.55,10 16,10H8C7.45,10 7,9.55 7,9V2H3Z" /></svg>
+                                <h3>Comprehensive Asthma Analysis Presentation</h3>
+                            </div>
+                             <p>
+                                 A visual presentation summarizing the key findings, methodology, and insights derived from the Comprehensive Asthma Analysis project based on self-collected data.
+                             </p>
+                         </div>
+                          <div>
+                            <a href="Comprehensive Asthma Analysis Presentation.pdf" target="_blank" rel="noopener noreferrer" class="card-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V11H4V13H16V15.59L19.59,12Z"/></svg>
+                                View PDF
+                            </a>
+                             <p class="pdf-note">
+                                 (Ensure PDF is uploaded and link is correct)
+                             </p>
+                         </div>
+                     </div>
+
+                     <div class="card">
+                         <div>
+                            <div class="card-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22,21H2V3H4V15.54L9.5,6L16,9.78L20.24,2.45L21.66,3.87L16.5,14.5L10,10.5L5.75,21H22Z" /></svg>
+                                <h3>Data Analytics Workflow for a Retail Business</h3>
+                            </div>
+                             <p>
+                                 Midterm project presentation outlining the steps, considerations, and potential applications of a structured data analytics workflow within a retail business context.
+                             </p>
+                         </div>
+                         <div>
+                            <a href="Midterm Presentation.pdf" target="_blank" rel="noopener noreferrer" class="card-link">
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V11H4V13H16V15.59L19.59,12Z"/></svg>
+                                View PDF
+                            </a>
+                            <p class="pdf-note">
+                                (Ensure PDF is uploaded and link is correct)
+                            </p>
+                        </div>
+                    </div>
+
+                 </div>
+            </div>
+        </section>
+
+
+        <!-- Work Experience Section (4th) -->
+        <section id="experience">
+            <div class="container">
+                <h2>Work Experience</h2>
+
+                <div class="item-card">
+                    <h3>Data Analyst</h3>
+                    <p class="subtitle">Upright Education | Dec 2024 - March 2025</p>
+                    <h4>Capstone</h4>
+                    <p class="project-title">Exploring the Key Drivers of Student Performance</p>
+                    <ul>
+                        <li>Performed rigorous data cleaning, transformation, and validation to enhance data accuracy and readability, ensuring meaningful insights in student performance analysis.</li>
+                        <li>Applied exploratory data analysis (EDA) techniques—such as correlation matrices, hypothesis testing, and scatterplots--to identify key academic success factors.</li>
+                        <li>Developed visualizations and dashboards using Seaborn, Matplotlib, Tableau, and Excel, enabling clear, data-driven storytelling for stakeholders translating complex statistical insights into actionable recommendations.</li>
+                        <li>Leveraged statistical methods (scipy.stats, pingouin) and machine learning models (Linear Regression, Decision Tree Regressor, Random Forest Regressor) to analyze predictive relationships between study habits and academic success.</li>
+                        <li>Collaborated with a team of data analysts to define project scope, methodology, and reporting structure, delivering a comprehensive analysis on student success factors.</li>
+                    </ul>
+                    <div class="skills-container">
+                         <strong>Skills Used:</strong>
+                         <span class="skill-badge skill-python">Python</span>
+                         <span class="skill-badge skill-r">R</span>
+                         <span class="skill-badge skill-sql">SQL</span>
+                         <span class="skill-badge skill-tableau">Tableau</span>
+                         <span class="skill-badge skill-excel">Excel</span>
+                         <span class="skill-badge skill-ml">Machine Learning</span>
+                         <span class="skill-badge skill-stats">Statistical Methods</span>
+                         <span class="skill-badge skill-eda">EDA</span>
+                         <span class="skill-badge skill-viz">Data Visualization</span>
+                         <span class="skill-badge skill-storytelling">Data Storytelling</span>
+                         <span class="skill-badge skill-communication">Business Communication</span>
+                         <span class="skill-badge skill-collaboration">Team Collaboration</span>
+                    </div>
+                </div>
+
+                 <div class="item-card">
+                    <h3>FC Associate – Problem Solve</h3>
+                    <p class="subtitle">Amazon | December 2021 – November 2024</p>
+                    <ul>
+                        <li>Operated Amazon’s Warehouse Management System (WMS) to track and correct stock errors, ensuring 99% inventory accuracy.</li>
+                        <li>Resolved mislabeled and damaged items, reducing unnecessary losses and ensuring products were ready for stowing and resale.</li>
+                        <li>Collaborated with managers and other problem solvers to streamline workflows and ensure smooth warehouse operation by having daily standups and communication via Slack.</li>
+                    </ul>
+                     <div class="skills-container">
+                         <strong>Skills Used:</strong>
+                         <span class="skill-badge skill-problemsolving">Problem Solving</span>
+                         <span class="skill-badge skill-criticalthinking">Critical Thinking</span>
+                         <span class="skill-badge skill-workflow">Workflow Efficiency</span>
+                         <span class="skill-badge skill-quality">Quality Control</span>
+                         <span class="skill-badge skill-collaboration">Team Collaboration</span>
+                    </div>
+                </div>
+
+                 <div class="item-card">
+                    <h3>Web Developer</h3>
+                     <p class="subtitle">Cognixia | January 2020 – May 2020</p>
+                    <ul>
+                       <li>Developed highly responsive user interface components using React.js and Redux, improving user experience and application performance.</li>
+                       <li>Designed and styled web applications using JavaScript, CSS, and PHP, ensuring visually intuitive user-friendly interfaces.</li>
+                    </ul>
+                    <div class="skills-container">
+                         <strong>Skills Used:</strong>
+                         <span class="skill-badge skill-react">React.js</span>
+                         <span class="skill-badge skill-redux">Redux</span>
+                         <span class="skill-badge skill-js">JavaScript</span>
+                         <span class="skill-badge skill-css">CSS</span>
+                         <span class="skill-badge skill-php">PHP</span>
+                         <span class="skill-badge skill-frontend">Front-End Development</span>
+                         <span class="skill-badge skill-uiux">User-Centered Design</span>
+                         <span class="skill-badge skill-uiux">UI/UX Design</span>
+                     </div>
+                </div>
+
+                 <div class="item-card">
+                    <h3>Project Coordinator Intern</h3>
+                     <p class="subtitle">Mount Sinai Health System (Cable Infrastructure Department) | November 2018 - October 2019</p>
+                    <ul>
+                        <li>Coordinated walkthroughs with end users to determine socket placement for network and electrical installations.</li>
+                        <li>Created and updated as-builts and marked up architectural blueprints to reflect requested infrastructure configurations.</li>
+                        <li>Compiled and documented project requirements before sending finalized blueprints to contractors for execution.</li>
+                        <li>Acted as a liaison between end users, contractors, and project managers, ensuring smooth communication and timely project completion.</li>
+                        <li>Assisted in tracking project progress and verifying that installations met compliance and client specifications.</li>
+                    </ul>
+                     <div class="skills-container">
+                         <strong>Skills Used:</strong>
+                         <span class="skill-badge skill-projectcoord">Project Coordination</span>
+                         <span class="skill-badge skill-architecture">Architectural Drawings</span>
+                         <span class="skill-badge skill-documentation">Documentation</span>
+                         <span class="skill-badge skill-communication">Communication</span>
+                         <span class="skill-badge skill-timemgmt">Time Management</span>
+                         <span class="skill-badge skill-detail">Attention to Detail</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Education Section (5th / Last) -->
+        <section id="education">
+             <div class="container">
+                <h2>Education</h2>
+
+                 <div class="item-card">
+                    <h3>Data Analytics Certificate</h3>
+                     <!-- EDITED DATE -->
+                     <p class="subtitle">Upright Education | March 2025</p>
+                 </div>
+
+                 <div class="item-card">
+                     <h3>Bachelor of Science in Information Systems and Informatics</h3>
+                     <p class="subtitle">College of Staten Island, CUNY | 2019</p>
+                     <ul>
+                         <li>Honors in the Major Information Systems and Informatics (3.8 GPA)</li>
+                         <li>Dean’s List</li>
+                     </ul>
+                 </div>
+
+                 <div class="item-card">
+                    <h3>Bachelor of Science in Information Technology</h3>
+                     <p class="subtitle">Cavite State University, Philippines | 2013</p>
+                 </div>
+
+             </div>
+        </section>
+
+    </main>
+
     <footer>
-      <p>© 2025 Abnerson Ocampo. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Abnerson Ocampo. All rights reserved.</p>
+        </div>
     </footer>
-  </div>
+
+    <script>
+        // Simple script to update the copyright year automatically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
 </body>
 </html>
