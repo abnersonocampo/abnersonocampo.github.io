@@ -58,7 +58,7 @@
         header .job-title { margin-top: 5px; margin-bottom: 25px; font-size: 1.3em; color: rgba(255, 255, 255, 0.9); font-weight: 400; }
 
         .header-social-links a {
-            margin: 5px 8px; display: inline-flex; align-items: center; color: var(--white);
+            margin: 0 8px; display: inline-flex; align-items: center; color: var(--white);
             border: 1px solid rgba(255, 255, 255, 0.7); padding: 8px 15px; border-radius: 25px;
             font-size: 0.9em; font-weight: 500; transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
         }
@@ -86,7 +86,7 @@
         section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--accent-color); border-radius: 2px; }
 
         section[id] {
-            scroll-margin-top: 70px;
+            scroll-margin-top: 70px; /* Adjust this value based on exact nav height */
         }
 
         /* --- About Section --- */
@@ -110,9 +110,10 @@
 
         .skill-badge {
             display: inline-block; padding: 4px 10px; margin: 3px; border-radius: 12px;
-            font-size: 0.9em; font-weight: 500; color: var(--skill-text-color);
+            font-size: 0.9em; /* EDITED: Increased font size */
+            font-weight: 500; color: var(--skill-text-color);
             line-height: 1.5; cursor: default; white-space: nowrap;
-            background-color: var(--skill-bg-primary);
+            background-color: var(--skill-bg-primary); /* All badges use primary blue */
         }
 
         /* --- Projects & Presentations Common Card Style --- */
@@ -121,38 +122,27 @@
             background-color: var(--white); border: 1px solid var(--border-color); border-radius: 8px;
             padding: 25px; box-shadow: 0 4px 8px var(--shadow-color); transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex; flex-direction: column; justify-content: space-between;
-            overflow: hidden;
         }
-        .card > div:first-of-type { display: flex; flex-direction: column; flex-grow: 1; min-height: 0; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); }
         .card .card-header { display: flex; align-items: center; margin-bottom: 12px; }
         .card .card-header svg { width: 24px; height: 24px; fill: var(--accent-color); margin-right: 10px; flex-shrink: 0; }
         .card h3 { margin-bottom: 0; font-size: 1.4em; }
         .card p { margin-bottom: 15px; flex-grow: 1; }
-        .card .tools { font-size: 0.9em; color: var(--secondary-text); margin-bottom: 20px; font-style: italic; background-color: var(--light-bg); padding: 5px 10px; border-radius: 4px; display: inline-block; flex-shrink: 0; }
+        .card .tools { font-size: 0.9em; color: var(--secondary-text); margin-bottom: 20px; font-style: italic; background-color: var(--light-bg); padding: 5px 10px; border-radius: 4px; display: inline-block; }
         .card .tools strong { font-style: normal; color: var(--primary-text); font-weight: 600; }
 
-        .card .card-buttons {
-             display: flex;
-             flex-wrap: wrap;
-             gap: 10px;
-             margin-top: auto;
-             padding-top: 10px;
-        }
         .card .card-link {
-            display: inline-flex; align-items: center; background-color: var(--accent-color); color: var(--white); padding: 10px 15px;
+            display: inline-flex; align-items: center; background-color: var(--accent-color); color: var(--white); padding: 10px 20px;
             text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease, transform 0.2s ease;
-            font-weight: 500; border: none; flex-shrink: 0;
+            align-self: flex-start; font-weight: 500; border: none;
         }
          .card .card-link svg { width: 16px; height: 16px; margin-right: 8px; fill: currentColor; }
         .card .card-link:hover { background-color: var(--accent-hover); text-decoration: none; transform: scale(1.03); }
 
-        .card .card-link.secondary-action { background-color: var(--secondary-text); }
-         .card .card-link.secondary-action:hover { background-color: var(--primary-text); }
-
         /* --- Presentations Section Specific --- */
          #presentations .intro-text { text-align: center; max-width: 780px; margin: 0 auto 40px auto; }
          #presentations .card p { margin-bottom: 10px; }
+         /* PDF Note rule removed */
 
 
         /* --- Education Section --- */
@@ -160,7 +150,7 @@
         #education .item-card { margin-bottom: 15px; padding: 20px 25px; }
         #education .item-card ul { margin-bottom: 0.5em; }
         #education .item-card ul li {
-            margin-bottom: 0.3em;
+            margin-bottom: 0.3em; /* EDITED: Reduced space between bullet points */
         }
         #education h3 { font-size: 1.3em; }
         #education p.subtitle { font-size: 0.95em; margin-bottom: 5px;}
@@ -183,11 +173,13 @@
             .item-card, .card { padding: 20px; }
             .item-card h3, .card h3 { font-size: 1.3em; }
             .skills-container strong { font-size: 0.95em; }
-            .skill-badge { font-size: 0.85em; }
+            .skill-badge { font-size: 0.85em; } /* Adjust badge font on medium screens */
             #education .item-card { padding: 15px 20px; }
             #education h3 { font-size: 1.2em; }
             #presentations .intro-text { margin-bottom: 30px; }
-            section[id] { scroll-margin-top: 60px; }
+            section[id] {
+                scroll-margin-top: 60px;
+            }
         }
          @media (max-width: 480px) {
               header h1 { font-size: 2em; }
@@ -196,9 +188,11 @@
               .header-social-links a { padding: 7px 12px; font-size: 0.85em; margin: 5px 5px;}
               .header-social-links a svg { width: 14px; height: 14px; margin-right: 5px;}
               nav ul li { display: block; margin: 8px 0; }
-              .skill-badge { font-size: 0.8em; padding: 3px 8px; }
+              .skill-badge { font-size: 0.8em; padding: 3px 8px; } /* Adjust badge font on small screens */
               .skills-container strong { font-size: 0.9em; }
-              section[id] { scroll-margin-top: 55px; }
+              section[id] {
+                  scroll-margin-top: 55px;
+              }
          }
 
     </style>
@@ -221,10 +215,6 @@
                 <a href="https://abnersonocampo.github.io/" target="_blank" rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/></svg>
                     GitHub
-                </a>
-                <a href="https://public.tableau.com/app/profile/abnersonocampo" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3H21V21H3V3M7 7V11H11V7H7M13 7V11H17V7H13M7 13V17H11V13H7M13 13V17H17V13H13Z"/></svg>
-                    Tableau
                 </a>
             </div>
         </div>
@@ -272,9 +262,8 @@
                 <h2>Projects</h2>
                 <div class="grid-container">
 
-                    <!-- Asthma Card -->
                     <div class="card">
-                        <div> <!-- Content Wrapper -->
+                        <div>
                             <div class="card-header">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A4,4 0 0,0 8,6C8,7.81 9.22,9.35 11,9.85V10.06C9.84,10.43 9,11.61 9,13C9,14.66 10.34,16 12,16C12.53,16 13,15.84 13.41,15.58C14.28,16.54 15.53,17.14 17,17.29V18H7V17.29C8.47,17.14 9.72,16.54 10.59,15.58C11,15.84 11.47,16 12,16C13.66,16 15,14.66 15,13C15,11.61 14.16,10.43 13,10.06V9.85C14.78,9.35 16,7.81 16,6A4,4 0 0,0 12,2M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4M12,12A1,1 0 0,1 13,13A1,1 0 0,1 12,14A1,1 0 0,1 11,13A1,1 0 0,1 12,12M9,20H15V22H9V20Z" /></svg>
                                 <h3>Comprehensive Asthma Analysis</h3>
@@ -286,17 +275,14 @@
                                 <strong>Tools:</strong> Python (Pandas, Matplotlib, Seaborn), Jupyter Notebook, Statistical Analysis, Data Visualization
                             </p>
                         </div>
-                        <div class="card-buttons">
-                            <a href="https://abnersonocampo.github.io/comprehensive-asthma-analysis/" target="_blank" rel="noopener noreferrer" class="card-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/></svg>
-                                View Project
-                            </a>
-                         </div>
+                        <a href="https://abnersonocampo.github.io/comprehensive-asthma-analysis/" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/></svg>
+                            View Project
+                        </a>
                     </div>
 
-                    <!-- Student Performance Card -->
                     <div class="card">
-                        <div> <!-- Content Wrapper -->
+                        <div>
                              <div class="card-header">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L23,9L12,3M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" /></svg>
                                 <h3>Student Performance Analysis</h3>
@@ -308,42 +294,13 @@
                                 <strong>Tools:</strong> Python (Pandas, Scikit-learn, Matplotlib, Seaborn), Jupyter Notebook, Data Visualization, Machine Learning
                             </p>
                         </div>
-                         <div class="card-buttons">
-                             <a href="https://abnersonocampo.github.io/student-performance-analysis/" target="_blank" rel="noopener noreferrer" class="card-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/></svg>
-                                View Project
-                             </a>
-                         </div>
+                         <a href="https://abnersonocampo.github.io/student-performance-analysis/" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/></svg>
+                            View Project
+                         </a>
                     </div>
 
-                    <!-- Retail Business Analysis Card -->
-                    <div class="card">
-                        <div> <!-- Content Wrapper -->
-                             <div class="card-header">
-                                 <!-- REVERTED Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2C2.89 2 2 2.89 2 4V14C2 15.11 2.89 16 4 16H10V20C10 21.11 10.89 22 12 22H20C21.11 22 22 21.11 22 20V10C22 8.89 21.11 8 20 8H14V4C14 2.89 13.11 2 12 2H4M4 4H12V14H4V4M14 10H20V20H14V10Z"/></svg>
-                                <h3>Retail Business Analysis</h3>
-                             </div>
-                            <p>
-                                This project simulates an end-to-end analysis for a retail business using limited sales data. It demonstrates cleaning, EDA, visualization, and ad-hoc analysis techniques to extract meaningful insights despite data constraints, supporting better business decision-making regarding customers, products, and sales trends.
-                            </p>
-                             <p class="tools">
-                                <strong>Tools:</strong> Excel (Analysis & Dashboarding), Python (Data Cleaning), SQL (Ad-Hoc Analysis)
-                            </p>
-                        </div>
-                         <div class="card-buttons">
-                             <a href="Midterm Dashboard/" target="_blank" rel="noopener noreferrer" class="card-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,6H20V16H4V6M4,18H11V20H4V18M13,18H20V20H13V18M6,8V14H18V8H6Z" /></svg>
-                                View Dashboard
-                             </a>
-                            <a href="Midterm Documentation.pdf" target="_blank" rel="noopener noreferrer" class="card-link secondary-action">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,20H5V4H15.73L17.73,6H19V20M18,8H16V4H6V20H18V8M4,2A2,2 0 0,0 2,4V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V6L16,0H4A2,2 0 0,0 2,2Z" /></svg>
-                                Documentation
-                            </a>
-                        </div>
-                    </div>
-
-                </div> <!-- End grid-container -->
+                </div>
             </div>
         </section>
 
@@ -366,11 +323,12 @@
                                  A visual presentation summarizing the key findings, methodology, and insights derived from the Comprehensive Asthma Analysis project based on self-collected data.
                              </p>
                          </div>
-                          <div class="card-buttons"> <!-- Button Wrapper -->
+                          <div> <!-- Link Wrapper -->
                             <a href="Comprehensive Asthma Analysis Presentation.pdf" target="_blank" rel="noopener noreferrer" class="card-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V11H4V13H16V15.59L19.59,12Z"/></svg>
                                 View PDF
                             </a>
+                            <!-- PDF Note Removed -->
                          </div>
                      </div>
 
@@ -384,11 +342,12 @@
                                  Midterm project presentation outlining the steps, considerations, and potential applications of a structured data analytics workflow within a retail business context.
                              </p>
                          </div>
-                         <div class="card-buttons"> <!-- Button Wrapper -->
+                         <div> <!-- Link Wrapper -->
                             <a href="Midterm Presentation.pdf" target="_blank" rel="noopener noreferrer" class="card-link">
                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V11H4V13H16V15.59L19.59,12Z"/></svg>
                                 View PDF
                             </a>
+                             <!-- PDF Note Removed -->
                         </div>
                     </div>
 
@@ -528,9 +487,8 @@
         </div>
     </footer>
 
-    <!-- Global Scripts -->
     <script>
-        // Copyright Year Update
+        // Simple script to update the copyright year automatically
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 
